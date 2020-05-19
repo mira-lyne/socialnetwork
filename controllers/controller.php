@@ -27,6 +27,11 @@ switch ($action) {
   case 'display':
   default:
     include "../models/PostManager.php";
+    if (isset($_GET['search'])) {
+      $posts = SearchInPosts($_GET['search']);
+    } else {
+      $posts = GetAllPosts();
+    }
     $posts = GetAllPosts();
 
     include "../models/CommentManager.php";
